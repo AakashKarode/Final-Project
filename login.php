@@ -1,36 +1,45 @@
-<?php
-include_once("view/view_login.php"); 
-?>
+
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Login Page</title>
+  <title>Register , login and logout user php mysql</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
-
 <body>
-  <div class='container' align="center">
+<div class="header">
+    <h1>Notes- to do list</h1>
+</div>
+<?php
+    if(isset($_SESSION['message']))
+    {
+         echo "<div id='error_msg'>".$_SESSION['message']."</div>";
+         unset($_SESSION['message']);
+    }
+?>
+<form method="post" action="controller.php">
+<input type="hidden" name="postaction" value="login_action"/><br>
+  <table>
+     <tr>
+           <td>Username : </td>
+           <td><input type="text" name="username" class="textInput"></td>
+     </tr>
+      <tr>
+           <td>Password : </td>
+           <td><input type="password" name="password" class="textInput"></td>
+     </tr>
+      <tr>
+           <td></td>
+           <td><input type="submit" name="login_btn" class="Log In" value="Login"></td>
+     </tr>
  
-    <form method = "post" action="index.php" class="login">
-      <div>
-        <label><b>Username</b></label>
-        <input type="text" name="reg_uname" placeholder="Enter Username" required>
-      </div>
-      <div>
-        <label><b>Password</b></label>
-        <input type="password" name="reg_password" placeholder="Enter Password" required>
-        <input type ="hidden" name="action" value="test_user">
-      </div>
-      <div>
-        <button type="submit">Login</button>    
-      </div>
-    </form>
- 
-    <form action="register.php" class="register">
-      <div>
-        <button type="submit">Sign up</button>
-      </div>
-    </form>
- 
-  </div>
+</table>
+</form>
+
+<form method="post" action="register.php">
+
+<td><input type="submit" align="center" name="register" class="Log In" value="Register" ></td>
+</form>
+
 </body>
- 
 </html>
+
