@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Register , login and logout user php mysql</title>
-  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <title>Notes</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
 <div class="header">
