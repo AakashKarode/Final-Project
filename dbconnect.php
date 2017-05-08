@@ -12,13 +12,18 @@
  ?>
  
  <?php
- function addUser($username,$email,$password,$password2){   
+ function addUser($username,$fname,$lname,$email,$number,$dob,$gender,$password,$password2){   
  global $db;
  
-$query = 'insert into users(email,password,password2,username) values(:email,:password,:password2,:username)';
+$query = 'insert into users(email,password,password2,username,fname,lname,number,dob,gender) values(:email,:password,:password2,:username,:fname,:lname,:number,:dob,:gender)';
 $statement = $db-> prepare($query);
 $statement->bindValue(':username',$username);
 $statement->bindValue(':email',$email);
+$statement->bindValue(':fname',$fname);
+$statement->bindValue(':lname',$lname);
+$statement->bindValue(':number',$number);
+$statement->bindValue(':dob',$dob);
+$statement->bindValue(':gender',$gender);
 
 $statement->bindValue(':password',$password);
 $statement->bindValue(':password2',$password2);
