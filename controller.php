@@ -15,9 +15,14 @@ if ($postaction == "homepage") {
     echo "post";
         $username = filter_input(INPUT_POST, 'username');
         $email = filter_input(INPUT_POST, 'email');
+        $fname = filter_input (INPUT_POST, 'fname');
+        $lname = filter_input (INPUT_POST, 'lname');
+        $number = filter_input (INPUT_POST, 'number');
+        $dob = filter_input (INPUT_POST, 'dob');
+        $gender = filter_input (INPUT_POST, 'gender');
         $password = filter_input(INPUT_POST, 'password');
         $password2 = filter_input(INPUT_POST, 'password2');
-        $adduser = addUser($username, $email, $password, $password2);
+        $adduser = addUser($username, $email, $fname, $lname, $number, $dob, $gender, $password, $password2);
         if($adduser)
         {
         echo "wrong!!";
