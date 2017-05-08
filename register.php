@@ -23,9 +23,29 @@
            <td>Username : </td>
            <td><input type="text" name="username" class="textInput"></td>
      </tr>
+      <tr>
+           <td>First Name: </td>
+           <td><input type="text" name="fname" class="textInput"></td>
+     </tr>
+      <tr>
+           <td>Last Name : </td>
+           <td><input type="text" name="lname" class="textInput"></td>
+     </tr>
      <tr>
            <td>Email : </td>
            <td><input type="email" name="email" class="textInput"></td>
+     </tr>
+      <tr>
+           <td>Phone Number : </td>
+           <td><input type="number" name="number" class="textInput"></td>
+     </tr>
+      <tr>
+           <td>Date of Birth: </td>
+           <td><input type="date" name="dob" class="textInput"></td>
+     </tr>
+      <tr>
+           <td>Gender: </td>
+           <td><input type="text" name="gender" class="textInput"></td>
      </tr>
       <tr>
            <td>Password : </td>
