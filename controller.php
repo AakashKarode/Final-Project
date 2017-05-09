@@ -8,12 +8,25 @@ if ($postaction == NULL) {
 if ($postaction == "homepage") {
     include('login.php');
 } else if ($postaction == 'login_action') {
+$email = $_COOKIE['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
+       $check = getUser($username,$password);
+   
+    if($check == true)
+{
+
+ //$results = getRecords($email); 
     include('home.php');
+
+}else{
+
+ header("Location: login.php?errormsg=1");
+
+}
+
 } else if ($postaction == 'reg_user') {
-    echo "post";
-        $username = filter_input(INPUT_POST, 'username');
+         $username = filter_input(INPUT_POST, 'username');
         $email = filter_input(INPUT_POST, 'email');
         $fname = filter_input (INPUT_POST, 'fname');
         $lname = filter_input (INPUT_POST, 'lname');
@@ -23,11 +36,11 @@ if ($postaction == "homepage") {
         $password = filter_input(INPUT_POST, 'password');
         $password2 = filter_input(INPUT_POST, 'password2');
         $adduser = addUser($username, $email, $fname, $lname, $number, $dob, $gender, $password, $password2);
-        if($adduser)
+        if($adduser == false)
         {
-        echo "wrong!!";
+         include("login.php");
         }else{
-        include("login.php");
+       echo "Wrong";
         }
         
     

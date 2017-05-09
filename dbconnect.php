@@ -33,4 +33,56 @@ $statement->closeCursor();
 return false;
 
 }
+
+function getUser($username,$password){
+global $db;
+  $query = 'select * from users where email = :username and password = :password';
+ $statement = $db->prepare($query);
+  $statement->bindValue(':username',$username);
+$statement->bindValue(':password',$password);
+$statement->execute();
+$result = $statement->fetchAll();
+$statement->closeCursor();
+
+$rowcount=$statement->rowCount();
+
+if($rowcount == 1) {
+ setcookie('login',$username);   //email
+ $_COOKIE['login'] = $username;
+ $email = $result[0]['email'];
+ setcookie('email',$email);
+ setcookie('islogged',true);
+ $_COOKIE['islogged'] = true;
+ return true;
+ 
+ }else{
+
+
+setcookie('login',false);
+ unset($_COOKIE['login']);
+ setcookie('islogged',false);
+
+
+ 
+ return false;
+ }
+ }
+
+
+//}
+
+function getRecords($email){
+//echo $email;
+ global $db;
+ $query = 'select * from task where email= :email order by taskdate desc , tasktime desc ';
+ $statement = $db-> prepare($query);
+ $statement->bindValue(':email',$email);
+ $statement->execute();
+ $results=$statement->fetchAll();
+ $statement->closeCursor();
+ return $results;
+}
+
+ //}
+
  ?>

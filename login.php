@@ -1,4 +1,10 @@
-
+<?php 
+if ( isset($_GET['errormsg']) && $_GET['errormsg'] == 1 )
+{
+    
+     $error = "Email address & password combination is incorrect!!";
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +15,7 @@
 <div class="header">
     <h1>Notes- to do list</h1>
 </div>
-<?php
-    if(isset($_SESSION['message']))
-    {
-         echo "<div id='error_msg'>".$_SESSION['message']."</div>";
-         unset($_SESSION['message']);
-    }
-?>
+<h3><?php echo $error; ?></h3>
 <form method="post" action="controller.php">
 <input type="hidden" name="postaction" value="login_action"/><br>
   <table>

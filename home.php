@@ -1,123 +1,37 @@
-<?php
-
-require('dbconnect.php');
-/*  $userid = $_GET['userid'];
-  $fname = $_GET['fname'];
-  $lname = $_GET['lname'];
-  require('db.php');
-  require('runq.php');
-  $results = runQuery($sql);
-*/?>
 
 <html>
-<head>
-<link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
-//<hr size="100">
- // <?php
-  //echo "<div style='text-align:right'><h2>Welcome ".$_COOKIE['login']." !!</h2></div>";
-  //?><hr>
+<body bgcolor='grey' >
+<table align="center" border="1">
+	<tr>
+		<th> Task number </th>
+		<th> Task Description</th>
+		<th> Date 	</th>
+		<th> Time	</th>
+		<th> Done	</th>
+	</tr>	
+	
+	<tr>
+		<td> 1	</td>
+		<td> Have to complete the project </td>
+		<td> 04/15/2017</td>
+		<td> 10:00am</td>
+		<td> No	</td>
+	</tr>
+	<tr>
+		<td> 2	</td>
+		<td> Have to submit the books to library </td>
+		<td> 04/26/2017</td>
+		<td> 11:00am</td>
+		<td> Yes	</td>
+	</tr>
+	<tr>
+		<td> 3	</td>
+		<td> Get milk </td>
+		<td> 04/23/2017</td>
+		<td> 3:00pm</td>
+		<td> No	</td>
+	</tr>
+</table>
 
-
-<div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h4>My Tasks</h4>
-          <div class="table-responsive">
-            <table id="mytable" class="table table-bordred table-striped" style="color:black;">
-                <thead>
-                  <th style="width:65%">Task</th>
-                  <th style="width:10%">Due Date</th>
-                  <th style="width:10%">Due Time</th>
-                  <th style="width:10%"></th>
-                  <th style="width:10%"></th>
-                  <th style="width:10%"></th>
-                </thead>
-                <table>
-                   <?php foreach($results as $res):?>
-                    <tr>                    
-                      <?php $status = $res['done'];?>
-                       <?php if($status == "No"): ?>
-                      
-                        <td style="width:65%"> <?php echo $res['taskdesc'];?></td>
-                        <td style="width:10%"> <?php echo $res['taskdate'];?></td>
-                        <td style="width:10%"> <?php echo $res['tasktime'];?></td>
-                        <td style="width:10%">
-                          <form action = 'index.php' method = 'post' >
-                            <input type="hidden" class="btn btn-danger" name = 'action' value="edit"/>
-                            <input type="hidden" class="btn btn-danger" name = 'itemid' value="<?php echo $res['id']; ?>"/>
-                            <input type="submit" class="btn btn-danger" value="edit"/>
-                          </form>
-                        </td>
-                        <td style="width:10%">
-                          <form action = 'index.php' method = 'post' >
-                            <input type="hidden" class="btn btn-danger" name = 'action' value="delete"/>
-                            <input type="hidden" class="btn btn-danger" name = 'itemid' value="<?php echo $res['id'];?>"/>
-                            <input type="submit" class="btn btn-danger" value="delete"/>
-                          </form>
-                        </td>
-                        <td style="width:10%">
-                          <form action = 'index.php' method = 'post' >
-                            <input type="hidden" class="btn btn-danger" name = 'action' value="complete"/>
-                            <input type="hidden" class="btn btn-danger" name = 'itemid' value="<?php echo $res['id'];?>"/>
-                            <input type="submit" class="btn btn-danger" value="Complete"/>
-                          </form>
-                        </td>
-                      <?php endif; ?>
-                    </tr>
-                  <?php endforeach;?>
-                </table>
-            </table>
-            
-            <table id="mytable" class="table table-bordred table-striped" style="color:black;">
-                <thead>
-                  <th style="width:65%">Task</th>
-                  <th style="width:10%">Due Date</th>
-                  <th style="width:10%">Due Time</th>
-                  <th style="width:10%"></th>
-                  <th style="width:10%"></th>
-                  <th style="width:10%"></th>
-                </thead>
-                <table>
-                   <?php foreach($results as $res):?>
-                    <tr>                    
-                      <?php $item_status = $res['done'];?>
-                       <?php if($item_status == "Yes"): ?>
-                      
-                        <td style="width:65%"> <?php echo $res['taskdesc'];?></td>
-                        <td style="width:10%"> <?php echo $res['taskdate'];?></td>
-                          <td style="width:10%"> <?php echo $res['tasktime'];?></td>
-                        <td style="width:10%">
-                          <form action = 'index.php' method = 'post' >
-                            <input type="hidden" class="btn btn-danger" name = 'action' value="edit"/>
-                            <input type="hidden" class="btn btn-danger" name = 'item_id' value="<?php echo $res['id']; ?>"/>
-                            <input type="submit" class="btn btn-danger" value="edit"/>
-                          </form>
-                        </td>
-                        <td style="width:10%">
-                          <form action = 'index.php' method = 'post' >
-                            <input type="hidden" class="btn btn-danger" name = 'action' value="delete"/>
-                            <input type="hidden" class="btn btn-danger" name = 'item_id' value="<?php echo $res['id'];?>"/>
-                            <input type="submit" class="btn btn-danger" value="delete"/>
-                          </form>
-                        </td>
-                        
-                      <?php endif; ?>
-                    </tr>
-                  <?php endforeach;?>
-                </table>
-            </table>
-            
-            <form action="addtask.php">
-              <input type="submit" value="Add New Task" class="btn btn-default" />
-            </form>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
-<br><hr><br>
-<a href = "comtask.php">Completed task</a>
 </body>
 </html>
